@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forlora - Linkvertise Complete</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #121212, #1e1e1e, #282828);
+            color: #00FF7F;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(20, 20, 20, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #00FF7F;
+            box-shadow: 0 0 25px #00FF7F, 0 0 10px #00FF7F inset;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #00FF7F;
+            text-shadow: 0 0 15px #00FF7F, 0 0 5px #00FF7F;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 0 10px #00FF7F;
+        }
+
+        .key-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 20px #FFD700, 0 0 10px #FFD700;
+            margin-top: 20px;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        .animated-glow {
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+            }
+            50% {
+                text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700;
+            }
+        }
+    </style>
+    <script>
+        function generateKey() {
+            // Generate a random 10-digit key
+            const key = Math.floor(1000000000 + Math.random() * 9000000000);
+
+            // Display the key on the website
+            document.getElementById("key").textContent = key;
+
+            // Send the key to the server
+            fetch(`/validate_key.php?key=${key}`);
+        }
+
+        // Trigger key generation when the page loads
+        window.onload = generateKey;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Forlora</h1>
+        <h2>Linkvertise Done</h2>
+        <p>Here's Your Key:</p>
+        <div id="key" class="key-display animated-glow"></div>
+        <div class="footer">© 2024 Forlora Gaming</div>
+    </div>
+</body>
+</html>
